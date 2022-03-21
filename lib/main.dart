@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'pages/home_page/home_page.dart';
 import 'services/start_service.dart';
+import 'providers/user_provider.dart';
+import 'services/user_service.dart';
+import 'package:provider/provider.dart';
+import 'commands/base_command.dart' as Commands;
 
 void main() {
   runApp(const MyApp());
@@ -13,12 +17,15 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Prayer Board',
-      theme: ThemeData(
-        primarySwatch: Colors.blueGrey,
-      ),
-      home: const MyHomePage(title: 'Prayer Board'),
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (c) => UserProvider()),
+        Provider(create: (c) => UserService()),
+      ],
+      child: Builder(builder: (context) {
+        Commands.init(context);
+        return const MaterialApp(home: MyHomePage(title: "Prayer Board"));
+      }),
     );
   }
 }

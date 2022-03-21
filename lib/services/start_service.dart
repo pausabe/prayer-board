@@ -1,6 +1,6 @@
-import '../services/prayer_manager/prayer_manager_service.dart';
-
 class StartService{
+
+  // TODO: maybe a Controller? Service = outer world
 
   // Singleton Pattern
   static final StartService _instance =
@@ -9,7 +9,5 @@ class StartService{
   StartService._privateConstructor();
 
   void actionsAfterAppStart(){
-    var prayerManagerService = PrayerManagerService();
-    prayerManagerService.loadPrayers();
   }
 }

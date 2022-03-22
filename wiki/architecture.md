@@ -4,6 +4,8 @@ It uses Flutter to make the application native cross-platform and uses the MVC+S
 
 ![mvcs](../assets/mvcs.png)
 
+// TODO: remove ViewController concept and change the work 'Riverpod' to 'Provider'
+
 ## Model
 Holds the state of the application and provides an API to access/filter/manipulate that data. Its concern is data encapsulation and management. It contains logic to structure, validate or compare different pieces of data that we call Domain Logic.
 

@@ -1,15 +1,12 @@
 import 'package:flutter/material.dart';
 import 'pages/home_page/home_page.dart';
-import 'services/start_service.dart';
 import 'providers/user_provider.dart';
 import 'services/user_service.dart';
 import 'package:provider/provider.dart';
-import 'commands/base_command.dart' as Commands;
+import 'controllers/base_controller.dart' as controllers;
 
 void main() {
   runApp(const MyApp());
-  var startService = StartService();
-  startService.actionsAfterAppStart();
 }
 
 class MyApp extends StatelessWidget {
@@ -19,12 +16,13 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
+        // TODO: why is this initialization necessary?
         ChangeNotifierProvider(create: (c) => UserProvider()),
         Provider(create: (c) => UserService()),
       ],
       child: Builder(builder: (context) {
-        Commands.init(context);
-        return const MaterialApp(home: MyHomePage(title: "Prayer Board"));
+        controllers.init(context);
+        return const MaterialApp(home: HomePage(title: "Prayer Board"));
       }),
     );
   }

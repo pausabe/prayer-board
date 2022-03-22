@@ -11,3 +11,4 @@ It's a work in progress but in the future will have the following features:
 - Login
 - Share Board
 - Notify changes to other members of a board
+- Multi-language

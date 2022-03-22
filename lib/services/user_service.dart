@@ -9,7 +9,7 @@ class UserService {
     prayer1.description = "...World Peace";
     var prayer2 = Prayer();
     prayer2.description = "...Poverty";
-    var prayers;
+    var prayers = <Prayer>[];
     prayers.add(prayer1);
     prayers.add(prayer2);
 

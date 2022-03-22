@@ -1,37 +1,45 @@
 import 'package:flutter/material.dart';
+import 'package:prayerboard/controllers/home_page/home_page_controller.dart';
 import 'package:prayerboard/providers/user_provider.dart';
-import '../../commands/refresh_prayers_command.dart';
+import '../../controllers/home_page/home_page_controller.dart';
 import '../../models/prayer.dart';
 import 'package:provider/provider.dart';
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({Key? key, required this.title}) : super(key: key);
+class HomePage extends StatefulWidget {
+  const HomePage({Key? key, required this.title}) : super(key: key);
   final String title;
 
   @override
-  State<MyHomePage> createState() => _MyHomePageState();
+  State<HomePage> createState() => _HomePageState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
+class _HomePageState extends State<HomePage> {
+  @override
+  void initState() {
+    // Run prayer refresh to build the page again when model is filled
+    // TODO: this HomePageController is a unique instance?
+    HomePageController().refreshUserPrayers();
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
-    RefreshPrayersCommand().run();
     var prayers = context.select<UserProvider, List<Prayer>>((value) => value.userPrayers);
-    var prayerDescriptions = prayers.map((prayer) => Text(prayer.description)).toList();
 
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.title),
       ),
       body: ListView.builder(
-        itemCount: prayerDescriptions.length,
+        itemCount: prayers.length,
         itemBuilder: (context, index) {
-          final prayerDescription = prayerDescriptions[index];
+          final prayerDescription = Text(prayers[index].description);
           return ListTile(
-            title: prayerDescription
+              title: prayerDescription
           );
         },
-      ),
+      )
     );
   }
+
 }

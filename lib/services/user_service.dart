@@ -6,9 +6,9 @@ class UserService {
     // TODO: Load from cache
 
     var prayer1 = Prayer();
-    prayer1.description = "...World Peace";
+    prayer1.description = "World Peace";
     var prayer2 = Prayer();
-    prayer2.description = "...Poverty";
+    prayer2.description = "Poverty";
     var prayers = <Prayer>[];
     prayers.add(prayer1);
     prayers.add(prayer2);

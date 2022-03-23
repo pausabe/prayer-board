@@ -2,9 +2,21 @@ import '../../models/prayer.dart';
 import '../base_controller.dart';
 
 class HomePageController extends BaseController {
-  Future<List<Prayer>> refreshUserPrayers() async {
+  Future<void> refreshUserPrayers() async {
+    print("refreshUserPrayers");
     List<Prayer> prayers = await userService.getPrayers();
     userProvider.userPrayers = prayers;
-    return prayers;
+  }
+
+  void openPrayerEditor(){
+    // TODO: implement correctly opening an editor
+
+    var currentPrayers = userProvider.userPrayers;
+    var newPrayer = Prayer();
+    newPrayer.description = "Faith";
+    currentPrayers.add(newPrayer);
+    userProvider.userPrayers = currentPrayers;
+    // TODO: why this does not notify the prayer list?
+    // TODO: and adding 'refreshUserPrayers()' here it does
   }
 }

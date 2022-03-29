@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:prayerboard/views/pages/home_page/prayer_item_list.dart';
 import '../../../models/prayer.dart';
 
 class PrayerList extends StatelessWidget {
@@ -10,10 +11,7 @@ class PrayerList extends StatelessWidget {
     return ListView.builder(
       itemCount: prayers.length,
       itemBuilder: (context, index) {
-        final prayerDescription = Text(prayers[index].description);
-        return ListTile(
-            title: prayerDescription
-        );
+        return PrayerItemList(prayer: prayers[index]);
       },
     );
   }

@@ -10,8 +10,8 @@ class Footer extends StatelessWidget {
       style: TextButton.styleFrom(
         primary: Colors.blueGrey,
       ),
-      onPressed: () => HomePageController().openPrayerEditor(),
-      child: const Text('New Prayer'),
+      onPressed: () => HomePageController().createEmptyPrayer(),
+      child: const Text('New Prayer'), // TODO: language system
     );
   }
 }

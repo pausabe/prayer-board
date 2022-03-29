@@ -16,7 +16,5 @@ class HomePageController extends BaseController {
     newPrayer.description = "Faith";
     currentPrayers.add(newPrayer);
     userProvider.userPrayers = currentPrayers;
-    // TODO: why this does not notify the prayer list?
-    // TODO: and adding 'refreshUserPrayers()' here it does
   }
 }

@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:prayerboard/controllers/home_page/home_page_controller.dart';
 import 'package:prayerboard/views/components/prayer_board_app_bar.dart';
+import 'package:provider/provider.dart';
 import '../../../controllers/home_page/home_page_controller.dart';
+import '../../../models/prayer.dart';
+import '../../../providers/user_provider.dart';
 import 'footer.dart';
 import 'prayer_list.dart';
 
@@ -24,16 +27,20 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    print("home build");
+    // Listen to UserProvider
+    Provider.of<UserProvider>(context);
+
+    var prayers = context.select<UserProvider, List<Prayer>>((value) => value.userPrayers);
+
     return Scaffold(
       appBar: PrayerBoardAppBar(title: widget.title),
       body: SafeArea(
         child: Column(
-          children: const <Widget>[
+          children:  <Widget>[
             Expanded(
-              child: PrayerList()
+              child: PrayerList(prayers: prayers)
             ),
-            Footer(),
+            const Footer(),
           ],
         ),
       ),

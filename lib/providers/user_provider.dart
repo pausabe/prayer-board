@@ -6,8 +6,6 @@ class UserProvider extends ChangeNotifier {
   List<Prayer> get userPrayers => _userPrayers;
   set userPrayers(List<Prayer> userPrayers) {
     _userPrayers = userPrayers;
-    int numberOfPrayers = userPrayers.length;
-    print('notify: $numberOfPrayers');
     notifyListeners();
   }
 }

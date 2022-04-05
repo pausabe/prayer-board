@@ -11,7 +11,7 @@ class PrayerList extends StatelessWidget {
     return ListView.builder(
       itemCount: prayers.length,
       itemBuilder: (context, index) {
-        return PrayerItemList(prayer: prayers[index]);
+        return PrayerItemList(index: index, prayer: prayers[index]);
       },
     );
   }

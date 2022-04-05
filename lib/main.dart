@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:prayerboard/services/persistent_data/persistent_data_service.dart';
 import 'views/pages/home_page/home_page.dart';
 import 'providers/user_provider.dart';
 import 'services/user_service.dart';
@@ -7,6 +8,8 @@ import 'controllers/base_controller.dart' as controllers;
 
 void main() {
   runApp(const MyApp());
+  //final persistentDataService = PersistentDataService.getInstance();
+  //persistentDataService.clearCache();
 }
 
 class MyApp extends StatelessWidget {

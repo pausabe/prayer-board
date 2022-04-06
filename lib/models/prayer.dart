@@ -16,6 +16,6 @@ class Prayer{
 
   @override
   String toString() {
-    return '"Prayer" : {${description.toString()}}';
+    return "'${description.toString()}'";
   }
 }

@@ -12,14 +12,39 @@ class PrayerItemList extends StatelessWidget {
     TextEditingController textFieldController = TextEditingController();
     // TODO: do i have to dispose textFieldController?
     textFieldController.text = prayer.description;
-    return TextField(
-      keyboardType: TextInputType.text,
-      autofocus: true,
-      textInputAction: TextInputAction.done,
-      controller: textFieldController,
-      onEditingComplete: () {
-        HomePageController().savePrayer(index, textFieldController.text);
+    return Dismissible(
+      key: UniqueKey(),
+
+      // only allows the user swipe from right to left
+      direction: DismissDirection.endToStart,
+
+      // Remove this Prayer from the list
+      onDismissed: (_) {
+        HomePageController().removePrayer(index);
       },
+
+      // Prayer Item
+      child: TextField(
+        keyboardType: TextInputType.text,
+        autofocus: true,
+        textInputAction: TextInputAction.done,
+        controller: textFieldController,
+        onChanged: (value) {
+          // TODO: avoid save too much (1 each second or so)
+          HomePageController().savePrayer(index, value);
+        },
+      ),
+
+      // This will show up when the user performs dismissal action
+      background: Container(
+        color: Colors.red,
+        margin: const EdgeInsets.symmetric(horizontal: 15),
+        alignment: Alignment.centerRight,
+        child: const Icon(
+          Icons.delete,
+          color: Colors.white,
+        ),
+      ),
     );
   }
 }

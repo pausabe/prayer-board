@@ -10,11 +10,26 @@ class HomePageController extends BaseController {
   }
 
   void createEmptyPrayer() {
-    addEmptyPrayer();
+    _addEmptyPrayer();
   }
 
-  // Returns the new prayer index in the prayer list
-  int addEmptyPrayer() {
+  Future<void> savePrayer(int prayerIndex, String description) async {
+    var currentPrayers = userProvider.userPrayers;
+    if(_indexIsCorrect(currentPrayers, prayerIndex)){
+      currentPrayers[prayerIndex].description = description;
+      await _savePrayersPersistently(currentPrayers);
+    }
+  }
+
+  Future<void> removePrayer(int prayerIndex) async {
+    var currentPrayers = userProvider.userPrayers;
+    if(_indexIsCorrect(currentPrayers, prayerIndex)){
+      currentPrayers.removeAt(prayerIndex);
+      await _savePrayersPersistently(currentPrayers);
+    }
+  }
+
+  int _addEmptyPrayer() {
     var currentPrayers = userProvider.userPrayers;
     var newPrayer = Prayer(description: "");
     currentPrayers.add(newPrayer);
@@ -22,12 +37,12 @@ class HomePageController extends BaseController {
     return currentPrayers.length - 1;
   }
 
-  Future<void> savePrayer(int prayerIndex, String description) async {
-    var currentPrayers = userProvider.userPrayers;
-    if(currentPrayers.length > prayerIndex){
-      currentPrayers[prayerIndex].description = description;
-      final SharedPreferences prefs = await SharedPreferences.getInstance();
-      await prefs.setString('prayers', jsonEncode(currentPrayers));
-    }
+  bool _indexIsCorrect(List<Prayer> prayers, int index){
+    return prayers.length > index;
+  }
+
+  Future<void> _savePrayersPersistently(List<Prayer> prayers) async{
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    await prefs.setString('prayers', jsonEncode(prayers));
   }
 }

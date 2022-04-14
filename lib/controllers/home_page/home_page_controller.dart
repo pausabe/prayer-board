@@ -4,9 +4,8 @@ import '../base_controller.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class HomePageController extends BaseController {
-  Future<void> refreshUserPrayers() async{
-    List<Prayer> prayers = await userService.getPrayers();
-    userProvider.userPrayers = prayers;
+  Future<void> setSavedUserPrayers() async {
+    userProvider.userPrayers = await userService.getPrayers();
   }
 
   void createEmptyPrayer() {
@@ -42,6 +41,7 @@ class HomePageController extends BaseController {
   }
 
   Future<void> _savePrayersPersistently(List<Prayer> prayers) async{
+    // TOOD: move to persistent service
     final SharedPreferences prefs = await SharedPreferences.getInstance();
     await prefs.setString('prayers', jsonEncode(prayers));
   }

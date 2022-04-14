@@ -7,9 +7,9 @@ class PersistentDataService implements IPersistentDataService {
   static PersistentDataService getInstance() => _instance;
 
   @override
-  Future<String> getJson(String key) async {
+  Future<String> getJson(String? key) async {
     final SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
-    final String valueString = sharedPreferences.getString(key) ?? "";
+    final String valueString = sharedPreferences.getString(key ?? "") ?? "";
     return valueString;
   }
 

@@ -1,0 +1,1 @@
+- use 'flutter pub run build_runner build' and @GenerateMocks([ClassToTest]) to generate the mocks

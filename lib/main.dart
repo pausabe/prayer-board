@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:prayerboard/services/language/language_service.dart';
 import 'package:prayerboard/services/persistent_data/persistent_data_service.dart';
 import 'views/pages/home_page/home_page.dart';
 import 'providers/user_provider.dart';
@@ -25,7 +26,8 @@ class MyApp extends StatelessWidget {
       ],
       child: Builder(builder: (context) {
         controllers.init(context);
-        return const MaterialApp(home: HomePage(title: "Prayer Board"));
+        var language = LanguageService.getInstance().getCurrentLanguage();
+        return MaterialApp(home: HomePage(title: language.appTitle));
       }),
     );
   }

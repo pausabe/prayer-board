@@ -15,7 +15,8 @@ class Footer extends StatelessWidget {
         primary: Colors.blueGrey,
       ),
       onPressed: () => HomePageController().createEmptyPrayer(),
-      child: Text(language.newPrayerButton),
+      child: Text(language.newPrayerButton,
+          style: Theme.of(context).textTheme.bodyText2),
     );
   }
 }

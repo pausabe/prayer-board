@@ -29,10 +29,11 @@ class PrayerItemList extends StatelessWidget {
         autofocus: true,
         textInputAction: TextInputAction.done,
         controller: textFieldController,
+        style: Theme.of(context).textTheme.bodyText2,
         onChanged: (value) {
           // TODO: avoid save too much (1 each second or so)
           HomePageController().savePrayer(index, value);
-        },
+        }
       ),
 
       // This will show up when the user performs dismissal action

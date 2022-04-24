@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:logging/logging.dart';
 import 'package:prayerboard/controllers/theme_controller.dart';
 import 'package:prayerboard/providers/theme_provider.dart';
 import 'package:prayerboard/services/language/language_service.dart';

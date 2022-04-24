@@ -1,5 +1,6 @@
 import 'package:prayerboard/services/persistent_data/persistent_data_service.dart';
 import '../../models/prayer.dart';
+import '../utils/pb_logger.dart';
 import './persistent_data/persistent_data_keys.dart' as persistent_data_keys;
 import 'dart:convert';
 
@@ -23,7 +24,7 @@ class UserService {
             .map((dynamic jsonObject) => Prayer.fromJson(jsonObject))
             .toList();
       } catch(e) {
-        // TODO: log message
+        PBLogger().logException(e);
       }
     }
     return prayers;

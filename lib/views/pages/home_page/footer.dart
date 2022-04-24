@@ -8,7 +8,7 @@ class Footer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
 
-    var language = LanguageService.getInstance().getCurrentLanguage();
+    var language = LanguageService.getInstance().currentLanguage;
 
     return TextButton(
       style: TextButton.styleFrom(

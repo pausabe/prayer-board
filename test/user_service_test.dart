@@ -16,21 +16,21 @@ void main(){
 
   group('User Service', () {
     test("Get prayers from string to List of two prayers", () async {
-      when(_mockPersistentDataService.getJson(any))
+      when(_mockPersistentDataService.getValue(any))
           .thenAnswer((_) async => '[{"description":"prayer1"},{"description":"prayer2"}]');
       var prayers = await _userService.getPrayers();
       expect(prayers.length, 2);
     });
 
     test("Get prayers when empty string", () async {
-      when(_mockPersistentDataService.getJson(any))
+      when(_mockPersistentDataService.getValue(any))
           .thenAnswer((_) async => '');
       var prayers = await _userService.getPrayers();
       expect(prayers.length, 0);
     });
 
     test("Get prayers when wrong string", () async {
-      when(_mockPersistentDataService.getJson(any))
+      when(_mockPersistentDataService.getValue(any))
           .thenAnswer((_) async => 'wrong json');
       var prayers = await _userService.getPrayers();
       expect(prayers.length, 0);

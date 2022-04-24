@@ -1,1 +1,2 @@
-String prayers = "prayers";
+String currentLanguageCode = "currentLanguageCode";
+String prayersJson = "prayersJson";

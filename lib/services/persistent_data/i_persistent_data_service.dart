@@ -1,4 +1,4 @@
 abstract class IPersistentDataService {
-  Future<String> getJson(String key);
+  Future<String> getValue(String key);
   Future<void> clearCache();
 }

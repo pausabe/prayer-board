@@ -4,13 +4,14 @@ import './persistent_data/persistent_data_keys.dart' as persistent_data_keys;
 import 'dart:convert';
 
 class UserService {
+  // ignore: prefer_typing_uninitialized_variables
   late final _persistentDataService;
 
   UserService({PersistentDataService? persistentDataService})
       : _persistentDataService = persistentDataService ?? PersistentDataService.getInstance();
 
   Future<List<Prayer>> getPrayers() async {
-    var prayersJson = await _persistentDataService.getJson(persistent_data_keys.prayers);
+    var prayersJson = await _persistentDataService.getValue(persistent_data_keys.prayersJson);
     return _prayersFromJson(prayersJson);
   }
 

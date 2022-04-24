@@ -28,8 +28,9 @@ class MockPersistentDataService extends _i1.Mock
   }
 
   @override
-  _i3.Future<String> getJson(String? key) =>
-      (super.noSuchMethod(Invocation.method(#getJson, [key]),
+  _i3.Future<String> getValue(String? key, {String? defaultValue = r''}) =>
+      (super.noSuchMethod(
+          Invocation.method(#getValue, [key], {#defaultValue: defaultValue}),
           returnValue: Future<String>.value('')) as _i3.Future<String>);
   @override
   _i3.Future<void> clearCache() =>

@@ -1,7 +1,9 @@
 import 'dart:convert';
 import '../../models/prayer.dart';
+import '../../services/persistent_data/persistent_data_service.dart';
 import '../base_controller.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import '../../services/persistent_data/persistent_data_keys.dart' as persistent_data_keys;
 
 class HomePageController extends BaseController {
   Future<void> setSavedUserPrayers() async {
@@ -41,8 +43,7 @@ class HomePageController extends BaseController {
   }
 
   Future<void> _savePrayersPersistently(List<Prayer> prayers) async{
-    // TOOD: move to persistent service
-    final SharedPreferences prefs = await SharedPreferences.getInstance();
-    await prefs.setString('prayers', jsonEncode(prayers));
+    await PersistentDataService.getInstance().saveValue(persistent_data_keys.prayersJson,
+        jsonEncode(prayers));
   }
 }

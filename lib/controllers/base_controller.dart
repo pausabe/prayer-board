@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:prayerboard/providers/theme_provider.dart';
 import 'package:provider/provider.dart';
 import '../providers/user_provider.dart';
 import '../services/user_service.dart';
@@ -11,6 +12,7 @@ class BaseController {
 
   // Providers
   UserProvider userProvider = _mainContext.read();
+  ThemeProvider themeProvider = _mainContext.read();
 
   // Services
   UserService userService = _mainContext.read();

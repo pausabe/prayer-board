@@ -1,7 +1,7 @@
-import '../persistent_data/persistent_data_service.dart';
-import 'languages/language_en.dart';
-import 'languages/language_base.dart';
-import '../persistent_data/persistent_data_keys.dart' as persistent_data_keys;
+import 'persistent_data/persistent_data_service.dart';
+import '../../languages/language_en.dart';
+import '../../languages/language_base.dart';
+import 'persistent_data/persistent_data_keys.dart' as persistent_data_keys;
 
 const String firstTimeLanguageCode = englishCode;
 const String englishCode = "en";

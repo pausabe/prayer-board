@@ -20,8 +20,7 @@ class _HomePageState extends State<HomePage> {
   @override
   void initState() {
     // Run prayer refresh to build the page again when model is filled
-    // TODO: is this HomePageController is a unique instance?
-    HomePageController().setSavedUserPrayers();
+    HomePageController.getInstance().setSavedUserPrayers();
     super.initState();
   }
 

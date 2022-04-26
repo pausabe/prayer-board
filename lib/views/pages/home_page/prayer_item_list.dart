@@ -10,7 +10,6 @@ class PrayerItemList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     TextEditingController textFieldController = TextEditingController();
-    // TODO: do i have to dispose textFieldController?
     textFieldController.text = prayer.description;
     return Dismissible(
       key: UniqueKey(),
@@ -20,7 +19,7 @@ class PrayerItemList extends StatelessWidget {
 
       // Remove this Prayer from the list
       onDismissed: (_) {
-        HomePageController().removePrayer(index);
+        HomePageController.getInstance().removePrayer(index);
       },
 
       // Prayer Item
@@ -31,8 +30,7 @@ class PrayerItemList extends StatelessWidget {
         controller: textFieldController,
         style: Theme.of(context).textTheme.bodyText2,
         onChanged: (value) {
-          // TODO: avoid save too much (1 each second or so)
-          HomePageController().savePrayer(index, value);
+          HomePageController.getInstance().savePrayer(index, value);
         }
       ),
 

@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:logging/logging.dart';
 import 'package:prayerboard/controllers/theme_controller.dart';
 import 'package:prayerboard/providers/theme_provider.dart';
 import 'package:prayerboard/services/language_service.dart';
-import 'controllers/home_page/home_page_controller.dart';
 import 'views/pages/home_page/home_page.dart';
 import 'providers/user_provider.dart';
 import 'services/user_service.dart';
@@ -20,7 +18,7 @@ class MyApp extends StatelessWidget {
   Future<void> initializationAsync() async {
     // Set here all the async initialization before starting the app
     await LanguageService.getInstance().setInitialLanguage();
-    await ThemeController().setInitialTheme();
+    await ThemeController.getInstance().setInitialTheme();
   }
 
   @override

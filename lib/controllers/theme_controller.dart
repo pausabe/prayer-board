@@ -9,6 +9,10 @@ const String darkThemeCode = "dark";
 const String lightThemeCode = "light";
 
 class ThemeController extends BaseController {
+  ThemeController._private();
+  static final ThemeController _instance = ThemeController._private();
+  static ThemeController getInstance() =>_instance;
+
   setInitialTheme() async{
 
     var persistentDataService = PersistentDataService.getInstance();

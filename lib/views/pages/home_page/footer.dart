@@ -14,7 +14,7 @@ class Footer extends StatelessWidget {
       style: TextButton.styleFrom(
         primary: Colors.blueGrey,
       ),
-      onPressed: () => HomePageController().createEmptyPrayer(),
+      onPressed: () => HomePageController.getInstance().createEmptyPrayer(),
       child: Text(language.newPrayerButton,
           style: Theme.of(context).textTheme.bodyText2),
     );

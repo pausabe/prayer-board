@@ -15,10 +15,10 @@ class ThemeController extends BaseController {
     var currentLanguageCode = await persistentDataService.getValue(persistent_data_keys.currentLanguageCode,
         defaultValue: firstTimeThemeCode);
     if(currentLanguageCode == darkThemeCode){
-      themeProvider.currentTheme = darkTheme;
+      themeProvider.currentTheme = DarkTheme().getTheme();
     }
     else if(currentLanguageCode == lightThemeCode){
-      themeProvider.currentTheme = lightTheme;
+      themeProvider.currentTheme = LightTheme().getTheme();
     }
   }
 }

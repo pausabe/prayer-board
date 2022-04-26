@@ -1,4 +1,4 @@
-import 'languages.dart';
+import 'language_base.dart';
 
 class LanguageEn extends Languages {
   @override
